@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "BetterSongList.PlayCountSort",
+  "name": "BetterSongList.PlayCountSort",
+  "author": "SuperSonic16",
+  "version": "1.0.0",
+  "description": "Adds play count sorting to BetterSongList.",
+  "gameVersion": "1.22.0",
+  "dependsOn": {
+    "BSIPA": "^4.2.2",
+    "SongCore": "^3.5.0",
+    "BetterSongList": "^0.3.0"
+  }
+}
