@@ -1,14 +1,10 @@
-﻿using BetterSongList;
-using BetterSongList.PlayCountSort.Sorters;
+﻿using BetterSongList.PlayCountSort.Sorters;
 using IPA;
-using IPA.Config;
-using IPA.Config.Stores;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using IPALogger = IPA.Logging.Logger;
 
 namespace BetterSongList.PlayCountSort
@@ -24,13 +20,21 @@ namespace BetterSongList.PlayCountSort
         {
             Instance = this;
             Log = logger;
-            Log.Info("BetterSongList.PlayCountSort initialized.");
         }
 
         [OnStart]
-        public void OnApplicationStart()
+        public void OnStart()
         {
-            SortMethods.RegisterPrimitiveSorter(new PlayCountSorter());
+            if (SortMethods.RegisterPrimitiveSorter(new PlayCountSorter()))
+                Log.Info("Registered PlayCountSorter!");
+            else
+                Log.Warn("Failed to register PlayCountSorter!");
+        }
+
+        // Just to make BSIPA happy, I would deregister if a function for it was provided
+        [OnExit]
+        public void OnExit()
+        {
         }
     }
 }
