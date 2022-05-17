@@ -9,13 +9,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace BetterSongList.PlayCountSort.Sorters
+namespace ExtraBSLSorters.Sorters
 {
     public class PlayCountSorter : ITransformerPlugin, ISorterPrimitive, ISorterWithLegend
     {
         public string name => "Play Count";
 
-        public bool visible => true;
+        public bool visible => PluginConfig.Instance.EnablePlayCountSorter;
 
         public bool isReady => _playerDataModel != null;
 
@@ -47,7 +47,10 @@ namespace BetterSongList.PlayCountSort.Sorters
         public IEnumerable<KeyValuePair<string, int>> BuildLegend(IPreviewBeatmapLevel[] levels) =>
             SongListLegendBuilder.BuildFor(levels, (level) =>
         {
-            return $"{GetPlayCount(level)}";
+            int count = GetPlayCount(level);
+            if (count == 0)
+                return "Never";
+            return count.ToString();
         });
 
         public float? GetValueFor(IPreviewBeatmapLevel level)

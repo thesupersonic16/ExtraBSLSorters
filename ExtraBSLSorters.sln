@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterSongList.PlayCountSort", "BetterSongList.PlayCountSort\BetterSongList.PlayCountSort.csproj", "{51F9CC72-31BE-477B-BAA2-02F7765F0466}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraBSLSorters", "ExtraBSLSorters\ExtraBSLSorters.csproj", "{51F9CC72-31BE-477B-BAA2-02F7765F0466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

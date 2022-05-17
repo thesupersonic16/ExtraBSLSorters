@@ -1,13 +1,14 @@
 ﻿{
   "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
-  "id": "BetterSongList.PlayCountSort",
-  "name": "BetterSongList.PlayCountSort",
+  "id": "ExtraBSLSorters",
+  "name": "ExtraBSLSorters",
   "author": "SuperSonic16",
-  "version": "1.0.1",
-  "description": "Adds play count sorting to BetterSongList.",
+  "version": "2.0.0",
+  "description": "Adds additional sorters to BetterSongList like play count sorting.",
   "gameVersion": "1.22.0",
   "dependsOn": {
     "BSIPA": "^4.2.2",
+    "BeatSaberMarkupLanguage": "^1.6.4",
     "BetterSongList": "^0.3.0"
   }
 }

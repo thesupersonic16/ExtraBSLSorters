@@ -1,5 +1,9 @@
-﻿using BetterSongList.PlayCountSort.Sorters;
+﻿using BeatSaberMarkupLanguage.Settings;
+using ExtraBSLSorters.Sorters;
+using ExtraBSLSorters.UI.ViewControllers;
 using IPA;
+using IPA.Config;
+using IPA.Config.Stores;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +11,7 @@ using System.Linq;
 using UnityEngine;
 using IPALogger = IPA.Logging.Logger;
 
-namespace BetterSongList.PlayCountSort
+namespace ExtraBSLSorters
 {
     [Plugin(RuntimeOptions.SingleStartInit)]
     public class Plugin
@@ -16,19 +20,18 @@ namespace BetterSongList.PlayCountSort
         internal static IPALogger Log { get; private set; }
 
         [Init]
-        public void Init(IPALogger logger)
+        public void Init(IPALogger logger, Config config)
         {
             Instance = this;
             Log = logger;
+            PluginConfig.Instance = config.Generated<PluginConfig>();
         }
 
         [OnStart]
         public void OnStart()
         {
-            if (SortMethods.RegisterPrimitiveSorter(new PlayCountSorter()))
-                Log.Info("Registered PlayCountSorter!");
-            else
-                Log.Warn("Failed to register PlayCountSorter!");
+            BSMLSettings.instance.AddSettingsMenu("ExtraBSLSorters", "ExtraBSLSorters.UI.Views.SettingsView.bsml", SettingsViewController.instance);
+            BSLSorters.Init();
         }
 
         // Just to make BSIPA happy, I would deregister if a function for it was provided
