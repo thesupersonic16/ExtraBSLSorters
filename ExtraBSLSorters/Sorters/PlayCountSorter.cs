@@ -1,14 +1,11 @@
 ﻿using BetterSongList.Interfaces;
 using BetterSongList.SortModels;
 using BetterSongList.Util;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace ExtraBSLSorters.Sorters
 {
@@ -22,7 +19,6 @@ namespace ExtraBSLSorters.Sorters
 
         private PlayerDataModel _playerDataModel;
         private Dictionary<string, int> _playCounts;
-        private bool _sceneChanged = true;
 
         public Task Prepare(CancellationToken cancelToken) => Prepare();
         public Task Prepare()
@@ -33,17 +29,15 @@ namespace ExtraBSLSorters.Sorters
 
             if (_playerDataModel == null)
                 return Task.CompletedTask;
-            
-            SceneManager.sceneLoaded += (_, _) =>
-            {
-                _sceneChanged = true;
-            };
 
             return Task.CompletedTask;
         }
 
         public void UpdatePlayCounts()
         {
+            if (_playerDataModel == null)
+                Prepare();
+            
             _playCounts = new Dictionary<string, int>();
             foreach (var statsData in _playerDataModel.playerData.levelsStatsData)
             {
@@ -56,16 +50,11 @@ namespace ExtraBSLSorters.Sorters
                     _playCounts.Add(statsData.levelID, statsData.playCount);
                 }
             }
-
-            _sceneChanged = false;
         }
 
         public int GetPlayCount(IPreviewBeatmapLevel level)
         {
-            if (_playerDataModel == null)
-                Prepare();
-            
-            if (_sceneChanged)
+            if (_playCounts == null || _playerDataModel == null)
                 UpdatePlayCounts();
 
             if (level == null)
@@ -88,6 +77,7 @@ namespace ExtraBSLSorters.Sorters
             return GetPlayCount(level);
         }
 
-        public void ContextSwitch(SelectLevelCategoryViewController.LevelCategory levelCategory, IAnnotatedBeatmapLevelCollection playlist) { }
+        public void ContextSwitch(SelectLevelCategoryViewController.LevelCategory levelCategory,
+            IAnnotatedBeatmapLevelCollection playlist) => UpdatePlayCounts();
     }
 }
