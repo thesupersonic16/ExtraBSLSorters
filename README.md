@@ -1,5 +1,5 @@
 # ExtraBSLSorters
-A Beat Saber plugin for [BetterSongList](https://github.com/kinsi55/BeatSaber_BetterSongList) which adds some extra sorters like sorting maps by play count.
+A Beat Saber plugin for [BetterSongList](https://github.com/kinsi55/BeatSaber_BetterSongList) which adds some extra sorters like sorting by play count.
 
 ## Usage
 Once installed new options should appear in the Sort dropdown when browsing maps. 
@@ -7,7 +7,7 @@ Once installed new options should appear in the Sort dropdown when browsing maps
 | Option       | Description                                        |
 | ------------ | -------------------------------------------------- |
 | Play Count   | Sort by the amount of times a map has been played. |
-| Artist Name  | sort the map's artist in alphabetical order.       |
+| Artist Name  | Sort by the map's artist in alphabetical order.    |
 
 These options can also be individually disabled in the mod settings.
 
