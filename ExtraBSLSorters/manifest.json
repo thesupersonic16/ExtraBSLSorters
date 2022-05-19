@@ -3,7 +3,7 @@
   "id": "ExtraBSLSorters",
   "name": "ExtraBSLSorters",
   "author": "SuperSonic16",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Adds additional sorters to BetterSongList like play count sorting.",
   "gameVersion": "1.22.0",
   "dependsOn": {
